@@ -2,19 +2,22 @@ body {
   margin: 10%;
   font-family: 'Franklin Gothic Medium', Arial, sans-serif;
 }
-.lastResult {
-
+#menu {
+  background-color: darkolivegreen;
   color: snow;
-  padding: 2px 0px;
+  padding: 5px 5px;
   text-align: center;
+  min-height: 400px;
 }
 button {
-  margin: 0px 2px;
+  margin: 4px;
+  padding: 4px;
+  background-color: snow;
 }
-.resultParas {
-  background-color: rgb(247, 247, 247);
-  min-height: 150px;
-  width: 360px;
-  padding: 5px;
-  margin-bottom: 5px;
+button:hover {
+  background-color: darkolivegreen;
+  color: snow;
+}
+h2 {
+  text-align: center;
 }

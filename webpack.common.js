@@ -19,7 +19,7 @@ module.exports = {
       },
     ]}),
     new HtmlWebpackPlugin({
-      title: 'Guessing Game',
+      title: 'Dummy Menu',
       meta: {
         viewport: 'width=device-width, initial-scale=1.0'
       },
