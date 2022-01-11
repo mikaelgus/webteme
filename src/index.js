@@ -1,34 +1,49 @@
 
 const menu = document.querySelector('.menu');
 
-let coursesEn = ["Hamburger, cream sauce and poiled potates",
-                "Goan style fish curry and whole grain rice",
-                "Vegan Chili sin carne and whole grain rice",
-                "Broccoli puree soup, side salad with two napas",
-                "Lunch baguette with BBQ-turkey filling",
-                "Cheese / Chicken / Vege / Halloum burger and french fries"];
-let coursesFi = ["Jauhelihapihvi, ruskeaa kermakastiketta ja keitettyä perunaa",
-                "Goalaista kalacurrya ja täysjyväriisiä",
-                "Vegaani Chili sin carne ja täysjyväriisi",
-                "Parsakeittoa, lisäkesalaatti kahdella napaksella",
-                "Lunch baguette with BBQ-turkey filling",
-                "Juusto / Kana / Kasvis / Halloumi burgeri ja ranskalaiset"];
+//haetaan json
+import lunchMenu from './sodexo-day-example.json';
+console.log('lounasmenu jsonista', lunchMenu);
+const finalMenu = lunchMenu.courses;
+
+//tehdään suomenkielinen ruokalista
+let coursesFi = [];
+const makeFinMenu = () => {
+  for(let i = 1; i < 10; i++){
+    coursesFi.push(finalMenu[i].title_fi);
+  };
+  console.log('uusi fin menu', coursesFi);
+};
+makeFinMenu(finalMenu);
+
+//tehdään englanninkielinen ruokalista
+let coursesEn = [];
+const makeEngMenu = () => {
+  for(let i = 1; i < 10; i++){
+    coursesEn.push(finalMenu[i].title_en);
+    //console.log(finalMenu[i].title_fi);
+  };
+  console.log('uusi eng menu', coursesEn);
+};
+makeEngMenu(finalMenu);
+
 //tulostetaan suomenkielinen menu
 const printFinMenu = () => {
-    document.getElementById('menu').innerHTML = '';
-    coursesFi.forEach(meal => {
-      document.getElementById('menu').innerHTML +=
-      `<p>${meal}</p><p> * * * </p>`;
-    });
-};
-//tulostetaan englanninkilinen menu
-const printEngMenu = () => {
   document.getElementById('menu').innerHTML = '';
-  coursesEn.forEach(meal => {
+  coursesFi.forEach(meal => {
     document.getElementById('menu').innerHTML +=
     `<p>${meal}</p><p> * * * </p>`;
   });
 };
+//tulostetaan englanninkilinen menu
+const printEngMenu = () => {
+document.getElementById('menu').innerHTML = '';
+coursesEn.forEach(meal => {
+  document.getElementById('menu').innerHTML +=
+  `<p>${meal}</p><p> * * * </p>`;
+});
+};
+
 //kielen valinta
 let languageBool = true;
 const printMenu = () => {
@@ -40,6 +55,7 @@ const printMenu = () => {
     printFinMenu();
   }
 };
+
 //menun sorttaus
 let sortBool = true;
 const sortMenu = () => {
@@ -72,12 +88,14 @@ const randomMeal = () => {
   document.getElementById('menu').innerHTML = '';
   if(languageBool === true){
     food = coursesFi[Math.floor(Math.random() * coursesFi.length)];
+    document.getElementById('menu').innerHTML = '<br><p>RANDOM LOUNAS JUURI SINULLE!</p><p> * * * </p>'
+  + `<p> ${food} </p><p> * * * </p>`;
   }
   if(languageBool === false){
     food = coursesEn[Math.floor(Math.random() * coursesEn.length)];
-  }
-  document.getElementById('menu').innerHTML = '<br><p>RANDOM LOUNAS JUURI SINULLE!</p><p> * * * </p>'
+    document.getElementById('menu').innerHTML = '<br><p>RANDOM LUNCH JUST FOR YOO!</p><p> * * * </p>'
   + `<p> ${food} </p><p> * * * </p>`;
+  }
 };
 
 printFinMenu();

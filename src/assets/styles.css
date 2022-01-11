@@ -20,4 +20,12 @@ button:hover {
 }
 h2 {
   text-align: center;
+  background-color: darkolivegreen;
+  padding: 15px;
+  color: snow;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
 }
