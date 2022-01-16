@@ -19,7 +19,7 @@ module.exports = {
       },
     ]}),
     new HtmlWebpackPlugin({
-      title: 'Dummy Menu',
+      title: 'Dummy Lounari',
       meta: {
         viewport: 'width=device-width, initial-scale=1.0'
       },

@@ -3,17 +3,38 @@
   <head>
     <meta charset="utf-8" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
-    <h2>DUMMY MENU</h2>
+    <nav>
+      <a href="index.html"><i class="fa fa-fw fa-home"></i>Etusivu</a>
+      <a href="#"><i class="fa fa-fw fa-book"></i>Ruokalistat</a>
+      <a href="#"><i class="fa fa-fw fa-cutlery"></i>Ravintolat</a>
+      <a href="#"><i class="fa fa-fw fa-envelope"></i>Yhteystiedot</a>
+      <div class="search">
+        <i class="fa fa-fw fa-search"></i
+        ><input type="text" placeholder="Etsi" />
+      </div>
+    </nav>
+    <header>
+      <div class="head head1">
+        <h2>DUMMY LOUNARI</h2>
+      </div>
+      <div class="head head2"></div>
+    </header>
     <div class="buttons">
       <button id="language">Kieli - Language</button>
       <button id="sort">Järjestä - Sort</button>
       <button id="random">Randomi - Random</button>
     </div>
-    <div id="menu">
-    </div>
-
+    <section class="container">
+      <div id="menu1" class="menu menu1"></div>
+      <div id="menu2" class="menu menu2"></div>
+    </section>
+    <footer></footer>
   </body>
 </html>
