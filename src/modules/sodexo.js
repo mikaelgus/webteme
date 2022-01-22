@@ -1,6 +1,6 @@
 
 
-import lunchMenu from "../sodexo-day-example.json";
+import lunchMenu from '../sodexo-day-example.json';
 const finalMenu = lunchMenu.courses;
 const metaData = lunchMenu.meta;
 

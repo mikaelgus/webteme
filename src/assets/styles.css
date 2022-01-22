@@ -4,6 +4,10 @@
   --nav-font-color: #940E3F;
   --header-font-color: snow;
   --border-color: #343A40;
+  --gray: #9BADBF;
+  --darkgreen: #1D9426;
+  --light-green: #65FF71;
+  --light-red: #E0437C;
   --h1-font: 'Roboto Slab', serif;
   --h1-font-size: 60px;
   --lato-regular: 'Lato', sans-serif;
@@ -43,6 +47,7 @@ a:hover {
 }
 .search {
   margin-left: auto;
+  height: 30px;
   display: flex;
   border: 1px solid var(--nav-font-color);
   border-radius: 5px;
@@ -110,7 +115,7 @@ h1 {
   width: 80px;
   height: 100%;
   float: left;
-  clip-path: polygon(100% 100%, 0 0, 0 100%);
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
   background-color: var(--main-bg-color);
 }
 #slogan {
@@ -155,8 +160,8 @@ p {
   font-family: var(--lato-regular);
   font-size: var(--lato-ruokalista-size);
 }
-#menupic {
+.menupic {
   border: 1px solid var(--border-color);
-  margin: 40px 10px 0 20px;
+  margin: 40px 10px 20px 20px;
   height: 150px;
 }
