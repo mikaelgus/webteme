@@ -15,7 +15,7 @@ let courses = [
 const validateMeal = () => {
   courses.forEach((meal) => {
     let name = meal.name;
-    console.log('Validating: ', name, ' == ', (/^[A-ZÖÄÅ]{1}[a-zöäå0-9 -/(),.;:]{4,64}$/.test(name)));
+    console.log('Validating: ', name, ' == ', (/^[A-ZÖÄÅ]{1}[a-zöäåA-ZÖÄÅ0-9 \-\/(),.;:]{3,63}$/.test(name)));
   });
 };
 validateMeal();
@@ -23,10 +23,8 @@ validateMeal();
 /**
  * Sorting menu by price
  */
-let sortByPrice = courses.sort((a, b) => {
-  return a.price - b.price;
-});
-console.log(sortByPrice);
+let sortByPrice = courses.sort((a, b) => a.price - b.price);
+console.log('Menu sorted by price: ', sortByPrice);
 
 /**
  * Print menu under 5€ to console
@@ -40,9 +38,14 @@ const filterMenu = () => {
 };
 filterMenu();
 
+console.log('Filtering 2nd: ', courses.filter(meal => meal.price < 5));
+
+/**
+ * Raise prise 15%
+ */
 const raisePrice = () => {
   const newPrices = courses.map(meal => meal.price * 1.15);
-  console.log('uudet hinnat', newPrices);
+  console.log('Uudet hinnat: ', newPrices);
 };
 raisePrice();
 
