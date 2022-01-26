@@ -1,20 +1,22 @@
+import lunchMenu from "../sodexo-day-example.json";
 
-
-import lunchMenu from '../sodexo-day-example.json';
-const finalMenu = lunchMenu.courses;
 const metaData = lunchMenu.meta;
-
-const coursesAll = [];
+const sodexoFin = [];
+const sodexoEng = [];
 
 /**
- * Making menu from Sodexo JSON object
+ * Making menus from Sodexo JSON object
+ * @param {String} menu JSON
  */
-const makeMenuAll = () => {
-  for (let i = 1; i < 10; i++) {
-    coursesAll.push(finalMenu[i]);
+const parseSodexo = (menu) => {
+  const courses = Object.values(menu);
+  for (const course of courses) {
+    sodexoFin.push(course.title_fi + " " + course.properties);
+    sodexoEng.push(course.title_en + " " + course.properties);
   }
 };
-makeMenuAll(finalMenu);
+parseSodexo(lunchMenu.courses);
 
-const SodexoMenu = {coursesAll, metaData};
+
+const SodexoMenu = { metaData, sodexoFin, sodexoEng };
 export default SodexoMenu;
