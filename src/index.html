@@ -5,10 +5,16 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link rel="stylesheet" href="assets/styles.css">
   </head>
-  <body>
-    <p>
-      Hello! Open the developer tools, please.<br />
-      Start by editing the files in <code>src/</code> folder.
-    </p>
+  <body ontouchstart="countFingers(event)" ontouchend="countFingers(event)">
+    <h2>Write correct cheat code</h2>
+    <p>Enter => quit</p>
+    <input type="text" id="code" name="code"/>
+    <h3 id="responce"></h3>
+    <h3 id="double-click"></h3>
+    <br/>
+    <h2>Touch event</h2>
+    <p>Touch a document and it shows how many fingers you are using.</p>
+    <p>You are using <span id="fingers">0</span> fingers</p>
+    <script src="index.js"></script>
   </body>
 </html>
