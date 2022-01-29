@@ -47,11 +47,11 @@ a:hover {
 }
 .search {
   margin-left: auto;
-  height: 30px;
+  height: 20px;
   display: flex;
   border: 1px solid var(--nav-font-color);
   border-radius: 5px;
-  padding: 7px;
+  padding: 4px;
 }
 #search-field {
   border: none;
@@ -63,6 +63,9 @@ svg {
 }
 svg:hover {
   fill: var(--main-bg-color);
+}
+#map-marker {
+  margin-left: 3rem;
 }
 button {
   margin: 4px;

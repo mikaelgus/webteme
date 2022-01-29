@@ -51,7 +51,7 @@ const renderMenu = (restaurant, menu, areaId) => {
   document.getElementById(areaId).innerHTML = "";
   document.getElementById(
     areaId
-  ).innerHTML = `<p id="restaurant">${restaurant}</p>`;
+  ).innerHTML = `<p id="restaurant">${restaurant} <i id="map-marker" class="fa fa-map-marker" aria-hidden="true"></i></p>`;
   menu.forEach((object) => {
     document.getElementById(areaId).innerHTML += `<p id="title">${object}</p>`;
     document.getElementById(areaId).innerHTML += `<p>* * *</p>`;
