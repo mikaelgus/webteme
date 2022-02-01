@@ -1,5 +1,12 @@
-import fazerFinnish from '../fazer-fin-example.json';
-import fazerEnglish from '../fazer-en-example.json';
+const dataUrlFi = `https://www.foodandco.fi/api/restaurant/menu/week?language=fi&restaurantPageId=270540&weekDate=2022-02-01`;
+const dataUrlEn = `https://www.foodandco.fi/api/restaurant/menu/week?language=en&restaurantPageId=270540&weekDate=2022-02-01`;
+
+const d = new Date();
+console.log('koko päiväys: ', d);
+console.log('vuosi: ', d.getFullYear());
+console.log('kuukausi: ', d.getMonth()+1);
+console.log('päivä: ', d.getDate());
+console.log('monesko päivä viikosta: ', d.getDay());
 
 /**
  *
@@ -11,33 +18,13 @@ const parseFazerMenus = (lunchMenu, day) => {
   const dailyMenu = lunchMenu[day].SetMenus.map(oneMenu => {
     let dailyMeals = '';
     for (const meal of oneMenu.Meals) {
-      dailyMeals += meal.Name + ' ' + meal.Diets + ', ';
+      dailyMeals += meal.Name + ' ' + meal.Diets + '<br/>';
     }
     return oneMenu.Name ? oneMenu.Name + ': ' + dailyMeals : dailyMeals;
   });
   return dailyMenu;
 };
 
-const fazerFinA = parseFazerMenus(fazerFinnish.LunchMenus, 0);
-const fazerEngA = parseFazerMenus(fazerEnglish.LunchMenus, 0);
 
-const fazerFin = [];
-const fazerEng = [];
-
-/**
- * Removing last comma
- *
- * @param {Array} where edited menu
- * @param {Array} from menu
- */
-const removeLastComma = (where, from) => {
-  from.forEach((meal) => {
-    let line = meal.replace(/,(?=\s*$)/, '');
-    where.push(line);
-  });
-};
-removeLastComma(fazerFin, fazerFinA);
-removeLastComma(fazerEng, fazerEngA);
-
-const FazerMenu = {fazerFin, fazerEng};
+const FazerMenu = {parseFazerMenus, dataUrlFi, dataUrlEn};
 export default FazerMenu;

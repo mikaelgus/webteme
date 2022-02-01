@@ -1,5 +1,6 @@
 import SodexoMenu from "./modules/sodexo";
 import FazerMenu from "./modules/fazer";
+import { fetchData } from "./modules/network";
 
 /**
  * Toggle language (finnish/english)
@@ -62,12 +63,18 @@ const renderMenu = (restaurant, menu, areaId) => {
  * Starting application
  */
 const start = () => {
+  //fetchData('https://www.sodexo.fi/ruokalistat/output/weekly_json/152').then(data => {console.log(data);});
   renderMenu('Sodexo', SodexoMenu.sodexoFin, 'menu1');
-  renderMenu('Fazer', FazerMenu.fazerFin, 'menu2');
 
+  // Render Fazer
+  fetchData(FazerMenu.dataUrlEn, true).then(data => {
+    // TODO: How to set correct weekday?
+    const courseFazer = FazerMenu.parseFazerMenus(data.LunchMenus, 1);
+    renderMenu('Fazer', courseFazer, 'menu2');
+  });
   document.getElementById("language").addEventListener("click", changeLanguage);
   document.getElementById("sort").addEventListener("click", () => {
-    //TODO
+    //TODO: sorting functions
   });
   document.getElementById("random").addEventListener("click", () => {
     alert(pickARandomMeal(SodexoMenu.sodexoFin));
