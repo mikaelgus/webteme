@@ -63,15 +63,18 @@ const renderMenu = (restaurant, menu, areaId) => {
  * Starting application
  */
 const start = () => {
-  //fetchData('https://www.sodexo.fi/ruokalistat/output/weekly_json/152').then(data => {console.log(data);});
-  renderMenu('Sodexo', SodexoMenu.sodexoFin, 'menu1');
+  //Render Sodexo
+  fetchData(SodexoMenu.dataUrl).then(data => {
+    const courseSodexo = SodexoMenu.parseSodexoMenu(data.mealdates);
+    renderMenu('Sodexo', courseSodexo, 'menu1');
+  });
 
   // Render Fazer
-  fetchData(FazerMenu.dataUrlEn, true).then(data => {
-    // TODO: How to set correct weekday?
-    const courseFazer = FazerMenu.parseFazerMenus(data.LunchMenus, 1);
+  fetchData(FazerMenu.dataUrlFi, true).then(data => {
+    const courseFazer = FazerMenu.parseFazerMenus(data.LunchMenus);
     renderMenu('Fazer', courseFazer, 'menu2');
   });
+
   document.getElementById("language").addEventListener("click", changeLanguage);
   document.getElementById("sort").addEventListener("click", () => {
     //TODO: sorting functions

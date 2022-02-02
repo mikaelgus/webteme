@@ -16,8 +16,6 @@ const fetchData = async (url, useProxy = false) => {
     } else {
       jsonData = await responce.json();
     }
-
-    console.log("what comes? ", jsonData);
     if (!responce.ok) {
       throw new Error(`HTTP ${responce.status}`);
     }
