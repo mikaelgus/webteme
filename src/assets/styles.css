@@ -64,6 +64,25 @@ svg {
 svg:hover {
   fill: var(--main-bg-color);
 }
+
+.navLinks {
+  margin-top: 10px;
+}
+.navLinks a {
+  text-decoration: none;
+  color: black;
+  margin: 0 20px;
+  line-height: 50px;
+}
+label{
+  width: 50px;
+  height: 50px;
+  display: none;
+}
+#hiddenCheck {
+  display: none;
+}
+
 #map-marker {
   margin-left: 3rem;
 }
@@ -168,8 +187,4 @@ p {
   margin: 40px 10px 20px 20px;
   height: 150px;
 }
-@media screen and (max-width: 960px){
-  #navText {
-    display: none;
-  }
-}
+

@@ -8,6 +8,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/mobile.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,10 +18,15 @@
   </head>
   <body>
     <nav>
-      <a href="index.html"><i class="fa fa-fw fa-home"></i><span id="navText">Etusivu</span></a>
-      <a href="#"><i class="fa fa-fw fa-book"></i><span id="navText">Ruokalistat</span></a>
-      <a href="#"><i class="fa fa-fw fa-cutlery"></i><span id="navText">Ravintolat</span></a>
-      <a href="#"><i class="fa fa-fw fa-envelope"></i><span id="navText">Yhteystiedot</span></a>
+      <label for="hiddenCheck"><i class="fa fa-align-justify"></i></label>
+      <input type="checkbox" id="hiddenCheck" />
+      <div class="navLinks">
+        <a href="index.html"><span id="navText">Etusivu</span></a>
+        <a href="#"><span id="navText">Ruokalistat</span></a>
+        <a href="#"><span id="navText">Ravintolat</span></a>
+        <a href="#"><span id="navText">Yhteystiedot</span></a>
+      </div>
+
       <div class="search">
         <svg
           id="search-icon"
@@ -218,9 +224,8 @@
       <div class="head head1">
         <div id="header-texts">
           <h1>LOUNARI</h1>
-        <p id="header-text">Mitä tänään syödään?</p>
+          <p id="header-text">Mitä tänään syödään?</p>
         </div>
-
       </div>
       <div class="head head2">
         <div id="triangle"></div>
@@ -233,8 +238,10 @@
     </div>
     <section id="slogan">
       <p>
-        Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä. Palvelu etsii lähelläsi olevat lounaspaikat, sekä näyttää niiden päivittäisen lounsalistan.
-        Viikottaiset lounaslistat ovat myös käytettävissäsi. Pääset niihin klikkaamalla ravintolan logoa.
+        Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä. Palvelu etsii
+        lähelläsi olevat lounaspaikat, sekä näyttää niiden päivittäisen
+        lounsalistan. Viikottaiset lounaslistat ovat myös käytettävissäsi.
+        Pääset niihin klikkaamalla ravintolan logoa.
       </p>
     </section>
     <section class="container">
@@ -246,7 +253,6 @@
         <div id="menupic2" class="menupic"></div>
         <div id="menu2" class="menu2"></div>
       </div>
-
     </section>
     <footer></footer>
   </body>
