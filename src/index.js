@@ -5,31 +5,38 @@ import { fetchData } from "./modules/network";
 /**
  * Toggle language (finnish/english)
  */
-let languageBool = "fi";
+let languageBool = "Fi";
 const changeLanguage = () => {
-  if (languageBool === "fi") {
-    languageBool = "en";
-    renderMenu("Sodexo", SodexoMenu.sodexoEng, "menu1");
-    renderMenu("Fazer", FazerMenu.fazerEng, "menu2");
+  if (languageBool === "Fi") {
+    languageBool = "En";
+    start();
   } else {
-    languageBool = "fi";
-    renderMenu("Sodexo", SodexoMenu.sodexoFin, "menu1");
-    renderMenu("Fazer", FazerMenu.fazerFin, "menu2");
+    languageBool = "Fi";
+    start();
   }
 };
 
+//Sorting menus
+let sortOrder = 'asc';
 /**
- * Sortin menus
- * @param {Array} courses menu array
- * @param {string} order 'asc'/'desc'
- * @returns {Array} sorted menu
+ * Ugly sorting menus but working
+ * @param {Array} menu1
+ * @param {Array} menu2
+ * @returns
  */
-const sortMenus = (menu, order = "asc") => {
-  const sortedMenu = menu.sort();
-  if (order === "desc") {
-    sortedMenu.reverse();
+const sortMenus = (menu1, menu2) => {
+  let sortedMenu1;
+  let sortedMenu2;
+  if(sortOrder == 'asc'){
+    sortOrder = 'desc';
+    sortedMenu1 = menu1.sort();
+    sortedMenu2 = menu2.sort();
+  }else{
+    sortOrder = 'asc';
+    sortedMenu1 = menu1.reverse();
+    sortedMenu2 = menu2.reverse();
   }
-  return sortedMenu;
+  return sortedMenu1, sortedMenu2;
 };
 
 /**
@@ -64,23 +71,38 @@ const renderMenu = (restaurant, menu, areaId) => {
  */
 const start = () => {
   //Render Sodexo
+let courseSodexo;
   fetchData(SodexoMenu.dataUrl).then(data => {
-    const courseSodexo = SodexoMenu.parseSodexoMenu(data.mealdates);
+    courseSodexo = SodexoMenu.parseSodexoMenu(data.mealdates, languageBool);
     renderMenu('Sodexo', courseSodexo, 'menu1');
   });
 
   // Render Fazer
-  fetchData(FazerMenu.dataUrlFi, true).then(data => {
-    const courseFazer = FazerMenu.parseFazerMenus(data.LunchMenus);
-    renderMenu('Fazer', courseFazer, 'menu2');
-  });
+  let courseFazer;
+  if(languageBool == 'Fi'){
+    fetchData(FazerMenu.dataUrlFi, true).then(data => {
+      courseFazer = FazerMenu.parseFazerMenus(data.LunchMenus);
+      renderMenu('Fazer', courseFazer, 'menu2');
+    });
+  }
+  if(languageBool == 'En'){
+    fetchData(FazerMenu.dataUrlEn, true).then(data => {
+      courseFazer = FazerMenu.parseFazerMenus(data.LunchMenus);
+      renderMenu('Fazer', courseFazer, 'menu2');
+    });
+  }
 
   document.getElementById("language").addEventListener("click", changeLanguage);
+
   document.getElementById("sort").addEventListener("click", () => {
-    //TODO: sorting functions
+    //TODO: better sorting
+    sortMenus(courseSodexo, courseFazer);
+    renderMenu('Sodexo', courseSodexo, 'menu1');
+    renderMenu('Fazer', courseFazer, 'menu2');
   });
   document.getElementById("random").addEventListener("click", () => {
-    alert(pickARandomMeal(SodexoMenu.sodexoFin));
+    //TODO: first random menu then random meal
+    alert(pickARandomMeal(courseSodexo)); //This is bugging!!
   });
 };
 start();

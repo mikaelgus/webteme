@@ -21,7 +21,6 @@ const dataUrlEn = `https://www.foodandco.fi/api/restaurant/menu/week?language=en
  * @returns {Array} daily menu
  */
 const parseFazerMenus = (lunchMenu) => {
-  console.log('this comes from fazer parse', lunchMenu);
   const dailyMenu = lunchMenu[menuDay].SetMenus.map(oneMenu => {
     let dailyMeals = '';
     for (const meal of oneMenu.Meals) {

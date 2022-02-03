@@ -168,3 +168,8 @@ p {
   margin: 40px 10px 20px 20px;
   height: 150px;
 }
+@media screen and (max-width: 960px){
+  #navText {
+    display: none;
+  }
+}
