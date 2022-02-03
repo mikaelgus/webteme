@@ -101,7 +101,7 @@ let courseSodexo;
     renderMenu('Fazer', courseFazer, 'menu2');
   });
   document.getElementById("random").addEventListener("click", () => {
-    //TODO: first random menu then random meal
+    //TODO: first random
     alert(pickARandomMeal(courseSodexo)); //This is bugging!!
   });
 };

@@ -19,7 +19,7 @@ module.exports = {
       },
     ]}),
     new HtmlWebpackPlugin({
-      title: 'Metropolian Lounari',
+      title: 'Metroploia Lounari',
       meta: {
         viewport: 'width=device-width, initial-scale=1.0'
       },
