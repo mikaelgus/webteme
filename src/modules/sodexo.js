@@ -1,5 +1,20 @@
+
+/**
+ * Function to get week number for menu
+ */
 const d = new Date();
-const menuDay = (d.getDay()-1);
+let menuDay = d.getDay();
+const setWeekDayNumber = () => {
+  if(menuDay === 0){
+    menuDay = 6;
+  }else{
+    menuDay = menuDay - 1;
+  }
+  //console.log('sodexo menu daily number is: ', menuDay);
+};
+setWeekDayNumber();
+
+
 //console.log('menu day: ', menuDay);
 
 const dataUrl = `https://www.sodexo.fi/ruokalistat/output/weekly_json/152`;
@@ -12,8 +27,14 @@ let sodexoCourses = [];
  * @param {String} menu JSON
  */
 const parseSodexoMenu = (menu, language) => {
+  console.log('sodexo menu', menu);
   sodexoCourses = [];
-  const courses = Object.values(menu[menuDay].courses);
+  try{
+    const courses = Object.values(menu[menuDay].courses);
+  }catch (e){
+    sodexoCourses.push('Ravintolat ovat tänään kiinni! <br/> Restaurants are closed today!');
+    return sodexoCourses;
+  }
   for (const course of courses) {
     if(language === 'Fi') {
       sodexoCourses.push(course.title_fi + " " + course.dietcodes);
@@ -21,7 +42,6 @@ const parseSodexoMenu = (menu, language) => {
     if(language === 'En'){
       sodexoCourses.push(course.title_en + " " + course.dietcodes);
     }
-
   }
   return sodexoCourses;
 };

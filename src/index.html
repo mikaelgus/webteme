@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="description" content="Metropolian lounaslistat, Metropolias's lunch menus"/>
+    <meta name="keywords" content="Metropolia, lunch, lounas, Lounari, lounari">
+    <meta name="author" content="Mikael Gustafsson">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -18,15 +21,18 @@
   </head>
   <body>
     <nav>
-      <label for="hiddenCheck"><i class="fa fa-align-justify"></i></label>
-      <input type="checkbox" id="hiddenCheck" />
-      <div class="navLinks">
-        <a href="index.html"><span id="navText">Etusivu</span></a>
-        <a href="#"><span id="navText">Ruokalistat</span></a>
-        <a href="#"><span id="navText">Ravintolat</span></a>
-        <a href="#"><span id="navText">Yhteystiedot</span></a>
-      </div>
-
+      <div id="menuToggle">
+      <input type="checkbox" id="burgerBox"/>
+        <span></span>
+        <span></span>
+        <span></span>
+      <ul class="navLinks">
+        <li><a href="index.html">Etusivu</a></li>
+        <li><a href="#">Ruokalistat</a></li>
+       <li><a href="#">Ravintolat</a></li>
+        <li><a href="#">Yhteystiedot</a></li>
+      </ul>
+    </div>
       <div class="search">
         <svg
           id="search-icon"
@@ -217,7 +223,7 @@
             </g>
           </g>
         </svg>
-        <input id="search-field" type="text" placeholder="Hae ravintola.." />
+        <input id="searchBar" type="text" name="searchBar" placeholder="Hae jotain.." />
       </div>
     </nav>
     <header>
@@ -243,14 +249,19 @@
         lounsalistan. Viikottaiset lounaslistat ovat myös käytettävissäsi.
         Pääset niihin klikkaamalla ravintolan logoa.
       </p>
+      <p id="output"></p>
     </section>
     <section class="container">
       <div class="menu m1">
-        <div id="menupic1" class="menupic"></div>
+        <div id="menupic1" class="menupic">
+          <img id="sodexologo" src="./assets/Sodexo_logo.jpeg" alt="sodexon logo">
+        </div>
         <div id="menu1" class="menu1"></div>
       </div>
       <div class="menu m2">
-        <div id="menupic2" class="menupic"></div>
+        <div id="menupic2" class="menupic">
+          <img id="fazerlogo" src="./assets/Fazer_logo.png" alt="fazerin logo">
+        </div>
         <div id="menu2" class="menu2"></div>
       </div>
     </section>
