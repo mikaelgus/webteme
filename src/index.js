@@ -2,6 +2,9 @@ import SodexoMenu from "./modules/sodexo";
 import FazerMenu from "./modules/fazer";
 import { fetchData } from "./modules/network";
 
+const sloganFi = document.querySelector('#sloganFi');
+const sloganEn = document.querySelector('#sloganEn');
+
 /**
  * Change theme color from dropdown menu
  */
@@ -49,10 +52,14 @@ const findString = (searchText) => {
 let languageBool = "Fi";
 const changeLanguage = () => {
   if (languageBool === "Fi") {
+    sloganEn.style.display = 'block';
+    sloganFi.style.display = 'none';
     languageBool = "En";
     start();
   } else {
     languageBool = "Fi";
+    sloganEn.style.display = 'none';
+    sloganFi.style.display = 'block';
     start();
   }
 };
@@ -107,6 +114,14 @@ const renderMenu = (restaurant, menu, areaId) => {
 };
 
 /**
+ * Simple language switch for slogan
+ */
+const onloadLanguageSettings = () => {
+  sloganEn.style.display = 'none';
+  sloganFi.style.display = 'block';
+};
+
+/**
  * Starting application
  */
 const start = () => {
@@ -146,3 +161,6 @@ const start = () => {
   });
 };
 start();
+
+//Window eventlistener for language of slogan
+window.addEventListener('load', onloadLanguageSettings);

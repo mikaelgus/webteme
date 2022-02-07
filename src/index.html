@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="fi-FI">
   <head>
     <meta charset="utf-8" />
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <meta name="description" content="Metropolian lounaslistat, Metropolias's lunch menus"/>
-    <meta name="keywords" content="Metropolia, lunch, lounas, Lounari, lounari">
-    <meta name="author" content="Mikael Gustafsson">
+    <meta
+      name="description"
+      content="Metropolian lounaslistat, Metropolias's lunch menus"
+    />
+    <meta
+      name="keywords"
+      content="Metropolia, lunch, lounas, Lounari, lounari"
+    />
+    <meta name="author" content="Mikael Gustafsson" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -22,25 +28,26 @@
   <body>
     <nav>
       <div id="menuToggle">
-      <input type="checkbox" id="burgerBox"/>
+        <label for="burgerBox"></label>
+        <input type="checkbox" id="burgerBox" />
         <span></span>
         <span></span>
         <span></span>
-      <ul class="navLinks">
-        <li><a href="index.html">Etusivu</a></li>
-        <li><a href="#">Ruokalistat</a></li>
-        <li><a href="#">Yhteystiedot</a></li>
-       <li><select id="themecolor" onchange="run()">
-         <option selected disabled>Teemaväri</option>
-         <option value="red">Punainen</option>
-         <option value="blue">Sininen</option>
-         <option value="green">Vihreä</option>
-         <option value="orange">Oranssi</option>
-       </select>
-      </li>
-
-      </ul>
-    </div>
+        <ul class="navLinks">
+          <li><a href="index.html">Etusivu</a></li>
+          <li><a href="#">Ruokalistat</a></li>
+          <li><a href="#">Yhteystiedot</a></li>
+          <li>
+            <select id="themecolor" onchange="run()">
+              <option selected disabled>Teemaväri</option>
+              <option value="red">Punainen</option>
+              <option value="blue">Sininen</option>
+              <option value="green">Vihreä</option>
+              <option value="orange">Oranssi</option>
+            </select>
+          </li>
+        </ul>
+      </div>
       <div class="search">
         <svg
           id="search-icon"
@@ -231,7 +238,12 @@
             </g>
           </g>
         </svg>
-        <input id="searchBar" type="text" name="searchBar" placeholder="Hae jotain.." />
+        <input
+          id="searchBar"
+          type="text"
+          name="searchBar"
+          placeholder="Hae jotain.."
+        />
       </div>
     </nav>
     <header>
@@ -251,24 +263,37 @@
       <button id="random">Randomi - Random</button>
     </div>
     <section id="slogan">
-      <p>
+      <p id="sloganFi">
         Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä. Palvelu etsii
         lähelläsi olevat lounaspaikat, sekä näyttää niiden päivittäisen
         lounsalistan. Viikottaiset lounaslistat ovat myös käytettävissäsi.
         Pääset niihin klikkaamalla ravintolan logoa.
       </p>
-      <p id="output"></p>
+      <p id="sloganEn">
+        Where to eat today? Familiar story before lunch. The service is
+        searching lunch places near you, as well as show their daily lunch list.
+        Weekly lunch menus are also available. You can access them by clicking
+        on the restaurant logo.
+      </p>
     </section>
     <section class="container">
       <div class="menu m1">
         <div id="menupic1" class="menupic">
-          <img id="sodexologo" src="./assets/Sodexo_logo.jpeg" alt="sodexon logo">
+          <img
+            id="sodexologo"
+            src="./assets/Sodexo_logo.jpeg"
+            alt="sodexon logo"
+          />
         </div>
         <div id="menu1" class="menu1"></div>
       </div>
       <div class="menu m2">
         <div id="menupic2" class="menupic">
-          <img id="fazerlogo" src="./assets/Fazer_logo.png" alt="fazerin logo">
+          <img
+            id="fazerlogo"
+            src="./assets/Fazer_logo.png"
+            alt="fazerin logo"
+          />
         </div>
         <div id="menu2" class="menu2"></div>
       </div>

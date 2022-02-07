@@ -36,6 +36,9 @@ const parseSodexoMenu = (menu, language) => {
         sodexoCourses.push(course.title_fi + " " + course.dietcodes);
       }
       if(language === 'En'){
+        if(!course.title_en){
+          course.title_en = course.title_fi;
+        }
         sodexoCourses.push(course.title_en + " " + course.dietcodes);
       }
     }

@@ -185,10 +185,9 @@ p {
   font-size: var(--lato-ruokalista-size);
 }
 .menupic {
-  border: 1px none var(--border-color);
   margin: 5px 10px 20px 20px;
   min-height: 6rem;
-  padding: 1rem
+  padding: 1rem;
 }
 #sodexologo, #fazerlogo {
   max-width: 100%;
