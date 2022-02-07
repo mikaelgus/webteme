@@ -15,7 +15,7 @@ const setWeekDayNumber = () => {
 setWeekDayNumber();
 
 
-//console.log('menu day: ', menuDay);
+console.log('menu day: ', menuDay);
 
 const dataUrl = `https://www.sodexo.fi/ruokalistat/output/weekly_json/152`;
 
@@ -31,18 +31,19 @@ const parseSodexoMenu = (menu, language) => {
   sodexoCourses = [];
   try{
     const courses = Object.values(menu[menuDay].courses);
+    for (const course of courses) {
+      if(language === 'Fi') {
+        sodexoCourses.push(course.title_fi + " " + course.dietcodes);
+      }
+      if(language === 'En'){
+        sodexoCourses.push(course.title_en + " " + course.dietcodes);
+      }
+    }
   }catch (e){
     sodexoCourses.push('Ravintolat ovat tänään kiinni! <br/> Restaurants are closed today!');
     return sodexoCourses;
   }
-  for (const course of courses) {
-    if(language === 'Fi') {
-      sodexoCourses.push(course.title_fi + " " + course.dietcodes);
-    }
-    if(language === 'En'){
-      sodexoCourses.push(course.title_en + " " + course.dietcodes);
-    }
-  }
+
   return sodexoCourses;
 };
 
