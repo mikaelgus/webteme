@@ -2,6 +2,28 @@ import SodexoMenu from "./modules/sodexo";
 import FazerMenu from "./modules/fazer";
 import { fetchData } from "./modules/network";
 
+/**
+ * Change theme color from dropdown menu
+ */
+let dropdown = document.getElementById("themecolor");
+dropdown.onchange = () => {
+  let selecteColor = dropdown.value;
+  localStorage.setItem("color", selecteColor);
+  //console.log('change theme color', selecteColor);
+  document.documentElement.style.setProperty(
+    "--main-bg-color",
+    localStorage.getItem("color")
+  );
+};
+
+/**
+ * Get theme color from localsotrage
+ */
+//console.log("color from localstorage", localStorage.getItem("color"));
+document.documentElement.style.setProperty(
+  "--main-bg-color",
+  localStorage.getItem("color")
+);
 
 /**
  * Search bar listener

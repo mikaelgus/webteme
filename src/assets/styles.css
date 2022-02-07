@@ -68,8 +68,8 @@ ul {
 }
 .navLinks a {
   text-decoration: none;
-  color: black;
-  margin: 0 5px;
+  color: var(--main-font-color);
+  margin: 0 0.5rem;
 }
 .navLinks a:hover {
   color: var(--main-bg-color);
@@ -77,6 +77,14 @@ ul {
 #burgerBox {
   display: none;
 }
+select {
+  display: block;
+  font-size: var(--lato-valikko-size);
+  margin-left: 5px;
+  padding: 0;
+  border: none;
+}
+
 #map-marker {
   margin-left: 3rem;
 }
