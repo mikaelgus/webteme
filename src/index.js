@@ -2,8 +2,8 @@ import SodexoMenu from "./modules/sodexo";
 import FazerMenu from "./modules/fazer";
 import { fetchData } from "./modules/network";
 
-const sloganFi = document.querySelector('#sloganFi');
-const sloganEn = document.querySelector('#sloganEn');
+const sloganFi = document.querySelector("#sloganFi");
+const sloganEn = document.querySelector("#sloganEn");
 
 /**
  * Change theme color from dropdown menu
@@ -52,14 +52,14 @@ const findString = (searchText) => {
 let languageBool = "Fi";
 const changeLanguage = () => {
   if (languageBool === "Fi") {
-    sloganEn.style.display = 'block';
-    sloganFi.style.display = 'none';
+    sloganEn.style.display = "block";
+    sloganFi.style.display = "none";
     languageBool = "En";
     start();
   } else {
     languageBool = "Fi";
-    sloganEn.style.display = 'none';
-    sloganFi.style.display = 'block';
+    sloganEn.style.display = "none";
+    sloganFi.style.display = "block";
     start();
   }
 };
@@ -102,11 +102,12 @@ const pickARandomMeal = (randomMenu) => {
  * @param {Array} menu
  * @param {String} areaId
  */
-const renderMenu = (restaurant, menu, areaId) => {
+const renderMenu = (restaurant, place, menu, areaId) => {
   document.getElementById(areaId).innerHTML = "";
   document.getElementById(
     areaId
-  ).innerHTML = `<p id="restaurant">${restaurant} <i id="map-marker" class="fa fa-map-marker" aria-hidden="true"></i></p>`;
+  ).innerHTML = `<p id="restaurant">${restaurant} <i id="map-marker" class="fa fa-map-marker" aria-hidden="true"></i></p>
+    <p id="place">${place}</p><br/>`;
   menu.forEach((object) => {
     document.getElementById(areaId).innerHTML += `<p id="title">${object}</p>`;
     document.getElementById(areaId).innerHTML += `<p>* * *</p>`;
@@ -117,19 +118,32 @@ const renderMenu = (restaurant, menu, areaId) => {
  * Simple language switch for slogan
  */
 const onloadLanguageSettings = () => {
-  sloganEn.style.display = 'none';
-  sloganFi.style.display = 'block';
+  sloganEn.style.display = "none";
+  sloganFi.style.display = "block";
 };
 
 /**
  * Starting application
  */
 const start = () => {
-  //Render Sodexo
   let courseSodexo;
-  fetchData(SodexoMenu.dataUrl).then((data) => {
+  //Render Sodexo Myyrmäki
+  const restaurantCode = 152;
+  fetchData(SodexoMenu.dataUrl + 152).then((data) => {
     courseSodexo = SodexoMenu.parseSodexoMenu(data.mealdates, languageBool);
-    renderMenu("Sodexo", courseSodexo, "menu1");
+    renderMenu("Sodexo", "Metropolia Myyrmäki", courseSodexo, "menu1");
+  });
+
+  //Render Sodexo Myllypuro
+  fetchData(SodexoMenu.dataUrl + 158).then((data) => {
+    courseSodexo = SodexoMenu.parseSodexoMenu(data.mealdates, languageBool);
+    renderMenu("Sodexo", "Metropolia Myllypuro", courseSodexo, "menu3");
+  });
+
+  //Render Eurest Arabia (sodexo data atm fro rendering)
+  fetchData(SodexoMenu.dataUrl + 152).then((data) => {
+    courseSodexo = SodexoMenu.parseSodexoMenu(data.mealdates, languageBool);
+    renderMenu("Compass grp", "Metropolia Arabia", courseSodexo, "menu4");
   });
 
   // Render Fazer
@@ -137,13 +151,13 @@ const start = () => {
   if (languageBool == "Fi") {
     fetchData(FazerMenu.dataUrlFi, true).then((data) => {
       courseFazer = FazerMenu.parseFazerMenus(data.LunchMenus);
-      renderMenu("Fazer", courseFazer, "menu2");
+      renderMenu("Fazer", "Metropolia Karaportti", courseFazer, "menu2");
     });
   }
   if (languageBool == "En") {
     fetchData(FazerMenu.dataUrlEn, true).then((data) => {
       courseFazer = FazerMenu.parseFazerMenus(data.LunchMenus);
-      renderMenu("Fazer", courseFazer, "menu2");
+      renderMenu("Fazer", "Metropolia Karaportti", courseFazer, "menu2");
     });
   }
 
@@ -152,8 +166,8 @@ const start = () => {
   document.getElementById("sort").addEventListener("click", () => {
     //TODO: better sorting
     sortMenus(courseSodexo, courseFazer);
-    renderMenu("Sodexo", courseSodexo, "menu1");
-    renderMenu("Fazer", courseFazer, "menu2");
+    renderMenu("Sodexo", "Metropolia Myyrmäki", courseSodexo, "menu1");
+    renderMenu("Fazer", "Metropolia Karaportti", courseFazer, "menu2");
   });
   document.getElementById("random").addEventListener("click", () => {
     //TODO: first random menu then random meal
@@ -163,4 +177,4 @@ const start = () => {
 start();
 
 //Window eventlistener for language of slogan
-window.addEventListener('load', onloadLanguageSettings);
+window.addEventListener("load", onloadLanguageSettings);

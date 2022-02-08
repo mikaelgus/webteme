@@ -3,30 +3,33 @@
   --main-font-color: #000000;
   --nav-font-color: #0f0f0f;
   --header-font-color: snow;
-  --border-color: #343A40;
-  --gray: #9BADBF;
-  --darkgreen: #1D9426;
-  --light-green: #65FF71;
-  --light-red: #E0437C;
-  --h1-font: 'Roboto Slab', serif;
+  --border-color: #343a40;
+  --gray: #9badbf;
+  --darkgreen: #1d9426;
+  --light-green: #65ff71;
+  --light-red: #e0437c;
+  --h1-font: "Roboto Slab", serif;
   --h1-font-size: 60px;
-  --lato-regular: 'Lato', sans-serif;
+  --lato-regular: "Lato", sans-serif;
   --lato-valikko-size: 20px;
   --lato-leipateksti-size: 24px;
   --lato-ruokalista-size: 14px;
   --lato-sijainti-size: 14px;
   --lato-ruokaluokka-size: 14px;
   --lato-ravintola-size: 21px;
+  --lato-paikka-size: 17px;
 }
 @font-face {
-  font-family: 'Lato';
-  src: url('/assets/Lato/Lato-Regular.ttf') format('truetype'),
-       url('/assets/Lato/Lato-Bold.ttf') format('truetype'),
-       url('/assets/Lato/Lato-Black.ttf') format('truetype');
+  font-family: "Lato";
+  src: url("/assets/Lato/Lato-Regular.ttf") format("truetype"),
+    url("/assets/Lato/Lato-Bold.ttf") format("truetype"),
+    url("/assets/Lato/Lato-Black.ttf") format("truetype");
 }
 body {
   margin: 0 50px;
   padding: 0;
+  height: 100%;
+  box-sizing: border-box;
 }
 nav {
   align-items: center;
@@ -79,6 +82,7 @@ ul {
 }
 select {
   display: block;
+  background-color: white;
   font-size: var(--lato-valikko-size);
   margin-left: 5px;
   padding: 0;
@@ -110,7 +114,7 @@ header {
 .head2 {
   width: 100%;
   height: 100%;
-  background-image: url('ruokaa.png');
+  background-image: url("ruokaa.png");
   background-size: cover;
   background-position: center;
 }
@@ -135,7 +139,7 @@ h1 {
   padding: 0;
   font-size: var(--lato-leipateksti-size);
 }
-#triangle{
+#triangle {
   width: 80px;
   height: 100%;
   float: left;
@@ -161,10 +165,10 @@ p {
   margin: 0 5%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(4, auto);
   grid-gap: 5%;
 }
-.menu{
+.menu {
   display: grid;
   border: 2px solid var(--border-color);
   border-radius: 10px;
@@ -176,11 +180,17 @@ p {
   font-family: var(--lato-regular);
   font-size: var(--lato-ravintola-size);
 }
+#place {
+  font-family: var(--lato-regular);
+  font-size: var(--lato-paikka-size);
+}
 #category {
   font-family: var(--lato-regular);
   font-size: var(--lato-ruokaluokka-size);
 }
-#title, #properties, #price {
+#title,
+#properties,
+#price {
   font-family: var(--lato-regular);
   font-size: var(--lato-ruokalista-size);
 }
@@ -189,11 +199,25 @@ p {
   min-height: 6rem;
   padding: 1rem;
 }
-#sodexologo, #fazerlogo {
+#sodexologo,
+#fazerlogo,
+#compasslogo {
   max-width: 100%;
 }
 .highlight {
   font-size: 2rem;
   color: red;
 }
-
+main {
+  margin-bottom: 5%;
+}
+footer {
+  background-color: var(--main-bg-color);
+  width: 100%;
+  color: var(--header-font-color);
+  font-family: var(--lato-regular);
+  text-align: center;
+}
+footer p {
+  padding: 15px;
+}
