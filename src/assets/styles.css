@@ -221,3 +221,39 @@ footer {
 footer p {
   padding: 15px;
 }
+/*From stackoverflow */
+.multiselect {
+  width: auto;
+  padding: 0 5px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  position: relative;
+  z-index: 100;
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}

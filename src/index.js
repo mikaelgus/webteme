@@ -5,6 +5,47 @@ import { fetchData } from "./modules/network";
 const sloganFi = document.querySelector("#sloganFi");
 const sloganEn = document.querySelector("#sloganEn");
 
+let expanded = false;
+/**
+ * Show or hide checkbox list
+ */
+const showCheckBoxes = () => {
+  let checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+};
+document.querySelector(".selectBox").addEventListener("click", showCheckBoxes);
+
+const arabia = document.querySelector('#one');
+const arabiaMenu = document.querySelector('.m4');
+const karaportti = document.querySelector('#two');
+const karaporttiMenu = document.querySelector('.m2');
+const myllypuro = document.querySelector('#three');
+const myllypuroMenu = document.querySelector('.m3');
+const myyrmaki = document.querySelector('#four');
+const myyrmakiMenu = document.querySelector('.m1');
+
+/**
+ * Checkboxes to show or hide menus
+ */
+arabia.onchange = () => {
+  arabia.checked ? arabiaMenu.style='display: grid' : arabiaMenu.style='display: none';
+};
+karaportti.onchange = () => {
+  karaportti.checked ? karaporttiMenu.style='display: grid' : karaporttiMenu.style='display: none';
+};
+myyrmaki.onchange = () => {
+  myyrmaki.checked ? myyrmakiMenu.style='display: grid' : myyrmakiMenu.style='display: none';
+};
+myllypuro.onchange = () => {
+  myllypuro.checked ? myllypuroMenu.style='display: grid' : myllypuroMenu.style='display: none';
+};
+
 /**
  * Change theme color from dropdown menu
  */

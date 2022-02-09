@@ -35,10 +35,29 @@
         <span></span>
         <ul class="navLinks">
           <li><a href="index.html">Etusivu</a></li>
-          <li><a href="#">Ruokalistat</a></li>
-          <li><a href="#">Yhteystiedot</a></li>
+          <form>
+            <div class="multiselect">
+              <div class="selectBox">
+                <select>
+                  <option>Ruokalistat</option>
+                </select>
+                <div class="overSelect"></div>
+              </div>
+              <div id="checkboxes">
+                <label for="one">
+                  <input class="inputbox" type="checkbox" id="one" value="m4" checked/>Arabia</label>
+                <label for="two">
+                  <input class="inputbox" type="checkbox" id="two" value="m2" checked/>Karaportti</label>
+                <label for="three">
+                  <input type="checkbox" id="three" value="m3" checked/>Myllypuro</label>
+                  <label for="four">
+                    <input type="checkbox" id="four" value="m1" checked/>Myyrmäki</label>
+              </div>
+            </div>
+          </form>
+          </li>
           <li>
-            <select id="themecolor" onchange="run()">
+            <select id="themecolor">
               <option selected disabled>Teemaväri</option>
               <option value="red">Punainen</option>
               <option value="blue">Sininen</option>
@@ -46,6 +65,7 @@
               <option value="orange">Oranssi</option>
             </select>
           </li>
+          <li><a href="#">Yhteystiedot</a></li>
         </ul>
       </div>
       <div class="search">
