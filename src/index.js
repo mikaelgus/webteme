@@ -1,6 +1,7 @@
 import SodexoMenu from "./modules/sodexo";
 import FazerMenu from "./modules/fazer";
 import { fetchData } from "./modules/network";
+import { Sortable } from '@shopify/draggable';
 
 const sloganFi = document.querySelector("#sloganFi");
 const sloganEn = document.querySelector("#sloganEn");
@@ -142,6 +143,13 @@ const onloadLanguageSettings = () => {
   sloganFi.style.display = "block";
   document.getElementById('header-text').innerHTML = 'Mitä tänään syödään?';
 };
+
+/**
+ * Sortable menus
+ */
+const sortable = new Sortable(document.querySelectorAll('section'), {
+  draggable: '.menu'
+});
 
 /**
  * Starting application

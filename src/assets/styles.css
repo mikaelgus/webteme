@@ -162,6 +162,7 @@ p {
   color: var(--main-font-color);
   grid-gap: 10px;
   grid-template-columns: 1fr 2fr;
+  background-color: white;
 }
 #restaurant {
   font-family: var(--lato-regular);
