@@ -21,29 +21,37 @@ const showCheckBoxes = () => {
 };
 document.querySelector(".selectBox").addEventListener("click", showCheckBoxes);
 
-const arabia = document.querySelector('#one');
-const arabiaMenu = document.querySelector('.m4');
-const karaportti = document.querySelector('#two');
-const karaporttiMenu = document.querySelector('.m2');
-const myllypuro = document.querySelector('#three');
-const myllypuroMenu = document.querySelector('.m3');
-const myyrmaki = document.querySelector('#four');
-const myyrmakiMenu = document.querySelector('.m1');
+const arabia = document.querySelector("#one");
+const arabiaMenu = document.querySelector(".m4");
+const karaportti = document.querySelector("#two");
+const karaporttiMenu = document.querySelector(".m2");
+const myllypuro = document.querySelector("#three");
+const myllypuroMenu = document.querySelector(".m3");
+const myyrmaki = document.querySelector("#four");
+const myyrmakiMenu = document.querySelector(".m1");
 
 /**
- * Checkboxes to show or hide menus
+ * Checkboxes to show or hide menus TODO: save menus
  */
 arabia.onchange = () => {
-  arabia.checked ? arabiaMenu.style='display: grid' : arabiaMenu.style='display: none';
+  arabia.checked
+    ? (arabiaMenu.style = "display: grid")
+    : (arabiaMenu.style = "display: none");
 };
 karaportti.onchange = () => {
-  karaportti.checked ? karaporttiMenu.style='display: grid' : karaporttiMenu.style='display: none';
+  karaportti.checked
+    ? (karaporttiMenu.style = "display: grid")
+    : (karaporttiMenu.style = "display: none");
 };
 myyrmaki.onchange = () => {
-  myyrmaki.checked ? myyrmakiMenu.style='display: grid' : myyrmakiMenu.style='display: none';
+  myyrmaki.checked
+    ? (myyrmakiMenu.style = "display: grid")
+    : (myyrmakiMenu.style = "display: none");
 };
 myllypuro.onchange = () => {
-  myllypuro.checked ? myllypuroMenu.style='display: grid' : myllypuroMenu.style='display: none';
+  myllypuro.checked
+    ? (myllypuroMenu.style = "display: grid")
+    : (myllypuroMenu.style = "display: none");
 };
 
 /**
@@ -95,45 +103,16 @@ const changeLanguage = () => {
   if (languageBool === "Fi") {
     sloganEn.style.display = "block";
     sloganFi.style.display = "none";
+    document.getElementById('header-text').innerHTML = 'What to eat today?';
     languageBool = "En";
     start();
   } else {
     languageBool = "Fi";
     sloganEn.style.display = "none";
     sloganFi.style.display = "block";
+    document.getElementById('header-text').innerHTML = 'Mitä tänään syödään?';
     start();
   }
-};
-
-//Sorting menus
-let sortOrder = "asc";
-/**
- * Ugly sorting menus but working
- * @param {Array} menu1
- * @param {Array} menu2
- * @returns
- */
-const sortMenus = (menu1, menu2) => {
-  let sortedMenu1;
-  let sortedMenu2;
-  if (sortOrder == "asc") {
-    sortOrder = "desc";
-    sortedMenu1 = menu1.sort();
-    sortedMenu2 = menu2.sort();
-  } else {
-    sortOrder = "asc";
-    sortedMenu1 = menu1.reverse();
-    sortedMenu2 = menu2.reverse();
-  }
-  return sortedMenu1, sortedMenu2;
-};
-
-/**
- * Printing random food from 1st menu
- */
-const pickARandomMeal = (randomMenu) => {
-  const randomIndex = Math.floor(Math.random() * randomMenu.length);
-  return randomMenu[randomIndex];
 };
 
 /**
@@ -161,6 +140,7 @@ const renderMenu = (restaurant, place, menu, areaId) => {
 const onloadLanguageSettings = () => {
   sloganEn.style.display = "none";
   sloganFi.style.display = "block";
+  document.getElementById('header-text').innerHTML = 'Mitä tänään syödään?';
 };
 
 /**
@@ -203,17 +183,6 @@ const start = () => {
   }
 
   document.getElementById("language").addEventListener("click", changeLanguage);
-
-  document.getElementById("sort").addEventListener("click", () => {
-    //TODO: better sorting
-    sortMenus(courseSodexo, courseFazer);
-    renderMenu("Sodexo", "Metropolia Myyrmäki", courseSodexo, "menu1");
-    renderMenu("Fazer", "Metropolia Karaportti", courseFazer, "menu2");
-  });
-  document.getElementById("random").addEventListener("click", () => {
-    //TODO: first random menu then random meal
-    alert(pickARandomMeal(courseSodexo)); //This is bugging!!
-  });
 };
 start();
 

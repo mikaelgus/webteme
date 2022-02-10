@@ -76,6 +76,7 @@ ul {
 }
 .navLinks a:hover {
   color: var(--main-bg-color);
+  cursor: pointer;
 }
 #burgerBox {
   display: none;
@@ -92,16 +93,7 @@ select {
 #map-marker {
   margin-left: 3rem;
 }
-button {
-  margin: 4px;
-  padding: 4px;
-  border-radius: 5px;
-  background-color: snow;
-}
-button:hover {
-  background-color: var(--main-bg-color);
-  color: var(--header-font-color);
-}
+
 header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -155,11 +147,6 @@ h1 {
 p {
   margin: 2px;
   padding: 3px;
-}
-.buttons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
 }
 .container {
   margin: 0 5%;
