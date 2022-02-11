@@ -1,59 +1,48 @@
 import SodexoMenu from "./modules/sodexo";
 import FazerMenu from "./modules/fazer";
 import { fetchData } from "./modules/network";
-import { Sortable } from '@shopify/draggable';
+import { Sortable } from "@shopify/draggable";
 
 const sloganFi = document.querySelector("#sloganFi");
 const sloganEn = document.querySelector("#sloganEn");
 
-let expanded = false;
+let showMenu = "show";
 /**
- * Show or hide checkbox list
+ * Dropdown toggle menus
+ *
+ * @param {String} number menu code
+ * @param {String} name of restaurant
  */
-const showCheckBoxes = () => {
-  let checkboxes = document.getElementById("checkboxes");
-  if (!expanded) {
-    checkboxes.style.display = "block";
-    expanded = true;
+const toggleMenu = (number, name) => {
+  let toggleMenuCode = document.querySelector(number);
+  let toggleNameColor = document.getElementById(name);
+  if (showMenu === "show") {
+    toggleMenuCode.style = "display: none";
+    toggleNameColor.style.backgroundColor = "white";
+    toggleNameColor.style.color = "var(--main-font-color)";
+    showMenu = "none";
+    start();
   } else {
-    checkboxes.style.display = "none";
-    expanded = false;
+    showMenu = "show";
+    toggleMenuCode.style = "display: grid";
+    toggleNameColor.style.backgroundColor = "var(--main-bg-color)";
+    toggleNameColor.style.color = "var( --header-font-color)";
+    start();
   }
 };
-document.querySelector(".selectBox").addEventListener("click", showCheckBoxes);
 
-const arabia = document.querySelector("#one");
-const arabiaMenu = document.querySelector(".m4");
-const karaportti = document.querySelector("#two");
-const karaporttiMenu = document.querySelector(".m2");
-const myllypuro = document.querySelector("#three");
-const myllypuroMenu = document.querySelector(".m3");
-const myyrmaki = document.querySelector("#four");
-const myyrmakiMenu = document.querySelector(".m1");
-
-/**
- * Checkboxes to show or hide menus TODO: save menus
- */
-arabia.onchange = () => {
-  arabia.checked
-    ? (arabiaMenu.style = "display: grid")
-    : (arabiaMenu.style = "display: none");
-};
-karaportti.onchange = () => {
-  karaportti.checked
-    ? (karaporttiMenu.style = "display: grid")
-    : (karaporttiMenu.style = "display: none");
-};
-myyrmaki.onchange = () => {
-  myyrmaki.checked
-    ? (myyrmakiMenu.style = "display: grid")
-    : (myyrmakiMenu.style = "display: none");
-};
-myllypuro.onchange = () => {
-  myllypuro.checked
-    ? (myllypuroMenu.style = "display: grid")
-    : (myllypuroMenu.style = "display: none");
-};
+document
+  .getElementById("arabia")
+  .addEventListener("click", () => toggleMenu(".m4", "arabia"));
+document
+  .getElementById("karaportti")
+  .addEventListener("click", () => toggleMenu(".m2", "karaportti"));
+document
+  .getElementById("myllypuro")
+  .addEventListener("click", () => toggleMenu(".m3", "myllypuro"));
+document
+  .getElementById("myyrmaki")
+  .addEventListener("click", () => toggleMenu(".m1", "myyrmaki"));
 
 /**
  * Change theme color from dropdown menu
@@ -104,14 +93,20 @@ const changeLanguage = () => {
   if (languageBool === "Fi") {
     sloganEn.style.display = "block";
     sloganFi.style.display = "none";
-    document.getElementById('header-text').innerHTML = 'What to eat today?';
+    document.getElementById("header-text").innerHTML = "What to eat today?";
+    document.getElementById("language").innerHTML = "Language";
+    document.getElementById("frontpage").innerHTML = "Frontpage";
+    document.getElementById("restaurants").innerHTML = "Restaurants";
     languageBool = "En";
     start();
   } else {
     languageBool = "Fi";
     sloganEn.style.display = "none";
     sloganFi.style.display = "block";
-    document.getElementById('header-text').innerHTML = 'Mitä tänään syödään?';
+    document.getElementById("header-text").innerHTML = "Mitä tänään syödään?";
+    document.getElementById("language").innerHTML = "Kieli";
+    document.getElementById("frontpage").innerHTML = "Etusivu";
+    document.getElementById("restaurants").innerHTML = "Ravintolat";
     start();
   }
 };
@@ -141,14 +136,14 @@ const renderMenu = (restaurant, place, menu, areaId) => {
 const onloadLanguageSettings = () => {
   sloganEn.style.display = "none";
   sloganFi.style.display = "block";
-  document.getElementById('header-text').innerHTML = 'Mitä tänään syödään?';
+  document.getElementById("header-text").innerHTML = "Mitä tänään syödään?";
 };
 
 /**
  * Sortable menus
  */
-const sortable = new Sortable(document.querySelectorAll('section'), {
-  draggable: '.menu'
+const sortable = new Sortable(document.querySelectorAll(".container"), {
+  draggable: ".menu",
 });
 
 /**
@@ -172,7 +167,7 @@ const start = () => {
   //Render Eurest Arabia (sodexo data atm fro rendering)
   fetchData(SodexoMenu.dataUrl + 152).then((data) => {
     courseSodexo = SodexoMenu.parseSodexoMenu(data.mealdates, languageBool);
-    renderMenu("Compass grp", "Metropolia Arabia", courseSodexo, "menu4");
+    renderMenu("Compass group", "Metropolia Arabia", courseSodexo, "menu4");
   });
 
   // Render Fazer

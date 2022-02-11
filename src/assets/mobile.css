@@ -1,17 +1,3 @@
-@media  screen and (max-width: 933px) {
-  .container {
-    grid-gap: 2%;
-  }
-}
-@media  screen and (max-width: 908px) {
-  .container {
-    grid-gap: 2%;
-  }
-  main {
-    margin-bottom: 10%;
-  }
-}
-
 @media screen and (max-width: 800px) {
   nav {
     margin: 5px;
@@ -27,61 +13,53 @@
     -webkit-user-select: none;
     user-select: none;
   }
-  #menuToggle input
-{
-  display: flex;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  cursor: pointer;
-  opacity: 0;
-  z-index: 2;
-}
-#menuToggle span
-{
-  display: flex;
-  width: 29px;
-  height: 2px;
-  margin-bottom: 5px;
-  position: relative;
-  background: black;
-  border-radius: 3px;
-  z-index: 1;
-  transform-origin: 5px 0px;
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              opacity 0.55s ease;
-}
-#menuToggle span:first-child
-{
-  transform-origin: 0% 0%;
-}
+  #menuToggle input {
+    display: flex;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+  }
+  #menuToggle span {
+    display: flex;
+    width: 29px;
+    height: 2px;
+    margin-bottom: 5px;
+    position: relative;
+    background: black;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 5px 0px;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  }
+  #menuToggle span:first-child {
+    transform-origin: 0% 0%;
+  }
 
-#menuToggle span:nth-last-child(2)
-{
-  transform-origin: 0% 100%;
-}
+  #menuToggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
 
-#menuToggle input:checked ~ span
-{
-  opacity: 1;
-  transform: rotate(45deg) translate(-3px, -1px);
-  background: #36383F;
-}
-#menuToggle input:checked ~ span:nth-last-child(3)
-{
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
+  #menuToggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-3px, -1px);
+    background: #36383f;
+  }
+  #menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
 
-#menuToggle input:checked ~ span:nth-last-child(2)
-{
-  transform: rotate(-45deg) translate(0, -1px);
-}
+  #menuToggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
   .navLinks {
     position: absolute;
     width: 180px;
-    height: 200px;
+    height: auto;
     box-shadow: 0 0 10px #85888c;
     margin: -15px 0 0 -50px;
     padding: 50px;
@@ -99,13 +77,13 @@
   .navLinks a {
     display: block;
   }
-  #menuToggle input:checked ~ ul
-{
-  transform: none;
-}
+  #menuToggle input:checked ~ ul {
+    transform: none;
+  }
   ul {
     display: block;
   }
+
   .search {
     margin-bottom: 5px;
   }
@@ -117,7 +95,7 @@
   }
   .head2 {
     height: 100px;
-    background-image: url('./ruokaa703x200.png');
+    background-image: url("./ruokaa703x200.png");
   }
   #triangle {
     display: none;
@@ -131,14 +109,6 @@
   .container {
     margin: 0;
   }
-  main {
-    margin-bottom: 15%;
-  }
-}
-@media screen and (max-width: 570px) {
-  main {
-    margin-bottom: 20%;
-  }
 }
 
 @media screen and (max-width: 500px) {
@@ -146,7 +116,7 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
   .head2 {
-    background-image: url('./ruokaa400x114.png');
+    background-image: url("./ruokaa400x114.png");
   }
   .menupic {
     margin: 10px 5px;
@@ -154,15 +124,5 @@
   }
   .menu {
     grid-gap: 5px;
-  }
-}
-@media screen and (max-width: 480px) {
-  main {
-    margin-bottom: 25%;
-  }
-}
-@media screen and (max-width: 417px) {
-  main {
-    margin-bottom: 30%;
   }
 }

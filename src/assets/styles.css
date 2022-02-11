@@ -28,7 +28,6 @@
 body {
   margin: 0 50px;
   padding: 0;
-  height: 100%;
   box-sizing: border-box;
 }
 nav {
@@ -37,13 +36,13 @@ nav {
   list-style-type: none;
   margin: 15px 30px 5px 30px;
   font-family: var(--lato-regular);
-  font-weight: bold;
   font-size: var(--lato-valikko-size);
 }
 
 .search {
   margin-left: auto;
   height: 20px;
+  max-width: 200px;
   display: flex;
   border: 1px solid var(--nav-font-color);
   border-radius: 5px;
@@ -148,14 +147,16 @@ p {
   margin: 2px;
   padding: 3px;
 }
+
 .container {
   margin: 0 5%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-template-rows: repeat(4, auto);
-  grid-gap: 5%;
+  grid-gap: 0;
 }
 .menu {
+  margin: 15px;
   display: grid;
   border: 2px solid var(--border-color);
   border-radius: 10px;
@@ -209,39 +210,45 @@ footer {
 footer p {
   padding: 15px;
 }
-/*From stackoverflow */
-.multiselect {
-  width: auto;
-  padding: 0 5px;
-}
 
-.selectBox {
+/* Menu dropdown */
+.dropdown {
   position: relative;
+  display: inline-block;
 }
 
-.selectBox select {
-  width: 100%;
-}
-
-.overSelect {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
-#checkboxes {
-  position: relative;
-  z-index: 100;
+.dropdown-content {
   display: none;
-  border: 1px #dadada solid;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
-#checkboxes label {
+.dropdown-content a {
+  color: white;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+  background-color: var(--main-bg-color);
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  width: auto;
+}
+.dropbtn {
+  border: none;
+  color: var(--nav-font-color);
+  font-size: var(--lato-valikko-size);
+  background-color: white;
+}
+.dropdown:hover .dropdown-content {
   display: block;
 }
 
-#checkboxes label:hover {
-  background-color: #1e90ff;
+.dropdown:hover .dropbtn {
+  background-color: var(--main-bg-color);
+  color: var(--header-font-color);
 }
