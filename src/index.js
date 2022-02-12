@@ -3,9 +3,6 @@ import FazerMenu from "./modules/fazer";
 import { fetchData } from "./modules/network";
 import { Sortable } from "@shopify/draggable";
 
-const sloganFi = document.querySelector("#sloganFi");
-const sloganEn = document.querySelector("#sloganEn");
-
 let showMenu = "show";
 /**
  * Dropdown toggle menus
@@ -86,27 +83,59 @@ const findString = (searchText) => {
 };
 
 /**
- * Toggle language (finnish/english)
+ * Set finnish texts
  */
-let languageBool = "Fi";
+const setLanguageTextsFi = () => {
+  sloganEn.style.display = "none";
+  sloganFi.style.display = "block";
+  document.getElementById("header-text").innerHTML = "Mitä tänään syödään?";
+  document.getElementById("language").innerHTML = "Kieli";
+  document.getElementById("frontpage").innerHTML = "Etusivu";
+  document.getElementById("restaurants").innerHTML = "Ravintolat";
+};
+/**
+ * Set english texts
+ */
+const setLanguageTextsEn = () => {
+  sloganEn.style.display = "block";
+  sloganFi.style.display = "none";
+  document.getElementById("header-text").innerHTML = "What to eat today?";
+  document.getElementById("language").innerHTML = "Language";
+  document.getElementById("frontpage").innerHTML = "Frontpage";
+  document.getElementById("restaurants").innerHTML = "Restaurants";
+};
+
+
+let languageBool;
+/**
+ * Get language from localstorage if not stored 'En'
+ * then use 'Fi'
+ */
+const getStoragedLanguage = () => {
+  let language = localStorage.getItem('language');
+  if(language == 'En'){
+    languageBool = 'En';
+    setLanguageTextsEn();
+  }else{
+    languageBool = 'Fi';
+    setLanguageTextsFi();
+  }
+};
+
+/**
+ * Toggle language (finnish/english) and save it to localstorage
+ */
+console.log('storage', localStorage);
 const changeLanguage = () => {
   if (languageBool === "Fi") {
-    sloganEn.style.display = "block";
-    sloganFi.style.display = "none";
-    document.getElementById("header-text").innerHTML = "What to eat today?";
-    document.getElementById("language").innerHTML = "Language";
-    document.getElementById("frontpage").innerHTML = "Frontpage";
-    document.getElementById("restaurants").innerHTML = "Restaurants";
+    setLanguageTextsEn();
     languageBool = "En";
+    localStorage.setItem('language', languageBool);
     start();
   } else {
     languageBool = "Fi";
-    sloganEn.style.display = "none";
-    sloganFi.style.display = "block";
-    document.getElementById("header-text").innerHTML = "Mitä tänään syödään?";
-    document.getElementById("language").innerHTML = "Kieli";
-    document.getElementById("frontpage").innerHTML = "Etusivu";
-    document.getElementById("restaurants").innerHTML = "Ravintolat";
+    setLanguageTextsFi();
+    localStorage.setItem('language', languageBool);
     start();
   }
 };
@@ -131,15 +160,6 @@ const renderMenu = (restaurant, place, menu, areaId) => {
 };
 
 /**
- * Simple language switch for slogan
- */
-const onloadLanguageSettings = () => {
-  sloganEn.style.display = "none";
-  sloganFi.style.display = "block";
-  document.getElementById("header-text").innerHTML = "Mitä tänään syödään?";
-};
-
-/**
  * Sortable menus
  */
 const sortable = new Sortable(document.querySelectorAll(".container"), {
@@ -150,9 +170,9 @@ const sortable = new Sortable(document.querySelectorAll(".container"), {
  * Starting application
  */
 const start = () => {
+  getStoragedLanguage();
   let courseSodexo;
   //Render Sodexo Myyrmäki
-  const restaurantCode = 152;
   fetchData(SodexoMenu.dataUrl + 152).then((data) => {
     courseSodexo = SodexoMenu.parseSodexoMenu(data.mealdates, languageBool);
     renderMenu("Sodexo", "Metropolia Myyrmäki", courseSodexo, "menu1");
@@ -184,10 +204,9 @@ const start = () => {
       renderMenu("Fazer", "Metropolia Karaportti", courseFazer, "menu2");
     });
   }
-
   document.getElementById("language").addEventListener("click", changeLanguage);
 };
 start();
 
-//Window eventlistener for language of slogan
-window.addEventListener("load", onloadLanguageSettings);
+//Window eventlistener on load
+//window.addEventListener("load", xxxxxxx);
