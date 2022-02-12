@@ -105,19 +105,18 @@ const setLanguageTextsEn = () => {
   document.getElementById("restaurants").innerHTML = "Restaurants";
 };
 
-
 let languageBool;
 /**
  * Get language from localstorage if not stored 'En'
  * then use 'Fi'
  */
 const getStoragedLanguage = () => {
-  let language = localStorage.getItem('language');
-  if(language == 'En'){
-    languageBool = 'En';
+  let language = localStorage.getItem("language");
+  if (language == "En") {
+    languageBool = "En";
     setLanguageTextsEn();
-  }else{
-    languageBool = 'Fi';
+  } else {
+    languageBool = "Fi";
     setLanguageTextsFi();
   }
 };
@@ -125,17 +124,17 @@ const getStoragedLanguage = () => {
 /**
  * Toggle language (finnish/english) and save it to localstorage
  */
-console.log('storage', localStorage);
+console.log("storage", localStorage);
 const changeLanguage = () => {
   if (languageBool === "Fi") {
     setLanguageTextsEn();
     languageBool = "En";
-    localStorage.setItem('language', languageBool);
+    localStorage.setItem("language", languageBool);
     start();
   } else {
     languageBool = "Fi";
     setLanguageTextsFi();
-    localStorage.setItem('language', languageBool);
+    localStorage.setItem("language", languageBool);
     start();
   }
 };
@@ -165,6 +164,32 @@ const renderMenu = (restaurant, place, menu, areaId) => {
 const sortable = new Sortable(document.querySelectorAll(".container"), {
   draggable: ".menu",
 });
+
+/**
+ * Open week menu from restaurant picture/logo
+ */
+let modal = document.getElementById("myModal");
+let closeModal = document.getElementsByClassName("close")[0];
+document.getElementById("menupic1").addEventListener("click", () => {
+  modal.style.display = "block";
+});
+document.getElementById("menupic2").addEventListener("click", () => {
+  modal.style.display = "block";
+});
+document.getElementById("menupic3").addEventListener("click", () => {
+  modal.style.display = "block";
+});
+document.getElementById("menupic4").addEventListener("click", () => {
+  modal.style.display = "block";
+});
+closeModal.onclick = function () {
+  modal.style.display = "none";
+};
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 
 /**
  * Starting application
