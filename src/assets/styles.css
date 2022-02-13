@@ -62,17 +62,18 @@ svg:hover {
 ul {
   list-style-type: none;
   display: flex;
-  margin: 0;
+  margin: auto;
   padding: 0;
 }
-.navLinks {
-  margin-top: 0;
+li {
+  margin: auto;
 }
+
 .navLinks a {
   text-decoration: none;
   color: var(--main-font-color);
-  margin: 0 0.5rem;
 }
+
 .navLinks a:hover {
   color: var(--main-bg-color);
   cursor: pointer;
@@ -241,8 +242,9 @@ footer p {
   background-color: #f1f1f1;
   width: auto;
 }
-.dropbtn {
+.dropbtn, .frontbtn, .langbtn {
   border: none;
+  margin: 0 5px;
   color: var(--nav-font-color);
   font-size: var(--lato-valikko-size);
   background-color: white;
