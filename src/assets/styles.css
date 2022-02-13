@@ -50,6 +50,12 @@ nav {
 }
 #searchBar {
   border: none;
+  width: 100%;
+}
+#searchBar:focus {
+  border: none;
+  outline: none;
+  width: 100%;
 }
 svg {
   padding: 3px;
