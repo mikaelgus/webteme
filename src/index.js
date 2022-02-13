@@ -12,34 +12,31 @@ let showMenu = "show";
  */
 const toggleMenu = (number, name) => {
   let toggleMenuCode = document.querySelector(number);
-  let toggleNameColor = document.getElementById(name);
   if (showMenu === "show") {
     toggleMenuCode.style = "display: none";
-    toggleNameColor.style.backgroundColor = "white";
-    toggleNameColor.style.color = "var(--main-font-color)";
     showMenu = "none";
+    localStorage.setItem(number, "none");
     start();
   } else {
     showMenu = "show";
     toggleMenuCode.style = "display: grid";
-    toggleNameColor.style.backgroundColor = "var(--main-bg-color)";
-    toggleNameColor.style.color = "var( --header-font-color)";
+    localStorage.setItem(number, "grid");
     start();
   }
 };
 
 document
   .getElementById("arabia")
-  .addEventListener("click", () => toggleMenu(".m4", "arabia"));
+  .addEventListener("click", () => toggleMenu(".m4"));
 document
   .getElementById("karaportti")
-  .addEventListener("click", () => toggleMenu(".m2", "karaportti"));
+  .addEventListener("click", () => toggleMenu(".m2"));
 document
   .getElementById("myllypuro")
-  .addEventListener("click", () => toggleMenu(".m3", "myllypuro"));
+  .addEventListener("click", () => toggleMenu(".m3"));
 document
   .getElementById("myyrmaki")
-  .addEventListener("click", () => toggleMenu(".m1", "myyrmaki"));
+  .addEventListener("click", () => toggleMenu(".m1"));
 
 /**
  * Change theme color from dropdown menu
@@ -92,6 +89,11 @@ const setLanguageTextsFi = () => {
   document.getElementById("language").innerHTML = "Kieli";
   document.getElementById("frontpage").innerHTML = "Etusivu";
   document.getElementById("restaurants").innerHTML = "Ravintolat";
+  document.getElementById("themeNav").innerHTML = "Teemaväri";
+  document.getElementById("red").innerHTML = "Punainen";
+  document.getElementById("blue").innerHTML = "Sininen";
+  document.getElementById("green").innerHTML = "Vihreä";
+  document.getElementById("orange").innerHTML = "Oranssi";
 };
 /**
  * Set english texts
@@ -103,6 +105,11 @@ const setLanguageTextsEn = () => {
   document.getElementById("language").innerHTML = "Language";
   document.getElementById("frontpage").innerHTML = "Frontpage";
   document.getElementById("restaurants").innerHTML = "Restaurants";
+  document.getElementById("themeNav").innerHTML = "Theme color";
+  document.getElementById("red").innerHTML = "Red";
+  document.getElementById("blue").innerHTML = "Blue";
+  document.getElementById("green").innerHTML = "Green";
+  document.getElementById("orange").innerHTML = "Orange";
 };
 
 let languageBool;
@@ -120,6 +127,21 @@ const getStoragedLanguage = () => {
     setLanguageTextsFi();
   }
 };
+
+/**
+ * Get menu display value from localstorage
+ *
+ * @param {String} number menu code
+ */
+const setStoragedMenus = (number) => {
+  let menuDisplay = localStorage.getItem(number);
+  console.log("menu code", menuDisplay);
+  document.querySelector(number).style.display = menuDisplay;
+};
+setStoragedMenus(".m1");
+setStoragedMenus(".m2");
+setStoragedMenus(".m3");
+setStoragedMenus(".m4");
 
 /**
  * Toggle language (finnish/english) and save it to localstorage
@@ -182,10 +204,10 @@ document.getElementById("menupic3").addEventListener("click", () => {
 document.getElementById("menupic4").addEventListener("click", () => {
   modal.style.display = "block";
 });
-closeModal.onclick = function () {
+closeModal.onclick = () => {
   modal.style.display = "none";
 };
-window.onclick = function (event) {
+window.onclick = (event) => {
   if (event.target == modal) {
     modal.style.display = "none";
   }
