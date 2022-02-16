@@ -3,12 +3,31 @@
   <head>
     <meta charset="utf-8"/>
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
+    <div class="ui three buttons">
+      <button class="ui active button">One</button>
+      <button class="ui button">Two</button>
+      <button class="ui button">Three</button>
+    </div>
+    <select name="skills" multiple="" class="ui fluid dropdown">
+      <option value="">Skills</option>
+      <option value="angular">Angular</option>
+      <option value="css">CSS</option>
+      <option value="ember">Ember</option>
+      <option value="html">HTML</option>
+      <option value="javascript">Javascript</option>
+      <option value="meteor">Meteor</option>
+      <option value="node">NodeJS</option>
+    </select>
     <p>
       Hello! Open the developer tools, please.<br />
       Start by editing the files in <code>src/</code> folder.
     </p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
